@@ -15,7 +15,10 @@ export const MovieDetails = ({ movieDetails }) => {
       )}
 
       <div>
-        <h2>{movieDetails.title}</h2>
+        <h2>
+          {movieDetails.title} (
+          {new Date(movieDetails.release_date).getFullYear()})
+        </h2>
         <p>User score: {Math.ceil((movieDetails.vote_average / 10) * 100)}%</p>
         <h3>Oerwiev</h3>
         <p>{movieDetails.overview}</p>

@@ -1,4 +1,4 @@
-import { fetchData } from 'Api';
+import { fetchTopMovies } from 'Api';
 import { MoviesList } from 'components/MoviesList/MoviesList';
 
 import { useEffect, useState } from 'react';
@@ -6,10 +6,10 @@ import { useEffect, useState } from 'react';
 const Home = () => {
   const [topMovies, setTopMovies] = useState([]);
   useEffect(() => {
-    const endpoint = 'trending/movie/day';
+    // const endpoint = 'trending/movie/day';
     async function getTopMovies() {
       try {
-        const topMoviesList = await fetchData(endpoint);
+        const topMoviesList = await fetchTopMovies();
         console.log(topMoviesList);
         setTopMovies(topMoviesList.results);
       } catch (error) {
