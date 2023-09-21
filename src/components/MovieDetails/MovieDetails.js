@@ -1,36 +1,48 @@
+import {
+  DescriptionWrapper,
+  ImgStyled,
+  MovieTitle,
+  Wrapper,
+  MovieOverview,
+  MovieGenres,
+  TextStyled,
+} from './MovieDetails.styled';
+
 const defaultImg =
   'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
 
 export const MovieDetails = ({ movieDetails }) => {
   return (
-    <div>
+    <Wrapper>
       {movieDetails.poster_path ? (
-        <img
+        <ImgStyled
           src={`https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`}
           alt={movieDetails.title}
           width={250}
         />
       ) : (
-        <img src={defaultImg} alt="poster" width={250} />
+        <ImgStyled src={defaultImg} alt="poster" width={250} />
       )}
 
-      <div>
-        <h2>
+      <DescriptionWrapper>
+        <MovieTitle>
           {movieDetails.title} (
           {new Date(movieDetails.release_date).getFullYear()})
-        </h2>
-        <p>User score: {Math.ceil((movieDetails.vote_average / 10) * 100)}%</p>
-        <h3>Oerwiev</h3>
-        <p>{movieDetails.overview}</p>
-        <h4>Genres</h4>
-        <p>
+        </MovieTitle>
+        <TextStyled>
+          User score: {Math.ceil((movieDetails.vote_average / 10) * 100)}%
+        </TextStyled>
+        <MovieOverview>Overview</MovieOverview>
+        <TextStyled>{movieDetails.overview}</TextStyled>
+        <MovieGenres>Genres</MovieGenres>
+        <TextStyled>
           {Array.isArray(movieDetails.genres)
             ? movieDetails.genres.map(elem => {
-                return `${elem.name} `;
+                return `${elem.name}  `;
               })
             : 'No genres available'}
-        </p>
-      </div>
-    </div>
+        </TextStyled>
+      </DescriptionWrapper>
+    </Wrapper>
   );
 };

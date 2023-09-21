@@ -1,7 +1,8 @@
 import { fetchMovie } from 'components/Data/Api';
 import { MovieDetails } from 'components/MovieDetails/MovieDetails';
 import { useEffect, useState } from 'react';
-import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
+import { Wrapper, ListWrapper, BackLink, LinkStyled } from './MoviePage.styled';
 const MoviePage = () => {
   const location = useLocation();
   const backLink = location.state?.from ?? '/';
@@ -26,20 +27,19 @@ const MoviePage = () => {
   }, [movie_id]);
 
   return (
-    <div>
-      Movie page {movie_id} with description
-      <Link to={backLink}>Back to the list</Link>
+    <Wrapper>
+      <BackLink to={backLink}>Back to the list</BackLink>
       <MovieDetails movieDetails={movieDetails} />
-      <ul>
+      <ListWrapper>
         <li>
-          <Link to="cast">Cast</Link>
+          <LinkStyled to="cast">Cast</LinkStyled>
         </li>
         <li>
-          <Link to="reviews">Reviews</Link>
+          <LinkStyled to="reviews">Reviews</LinkStyled>
         </li>
-      </ul>
+      </ListWrapper>
       <Outlet />
-    </div>
+    </Wrapper>
   );
 };
 
