@@ -2,16 +2,16 @@ import { fetchMovieCast } from 'Api';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
+const defaultImg =
+  'https://png.pngtree.com/png-vector/20191002/ourmid/pngtree-comedy-and-tragedy-theatrical-masks-icon-png-image_1783971.jpg';
 const Cast = () => {
   const { movie_id } = useParams();
-  console.log(movie_id);
   const [cast, setMovieCast] = useState([]);
 
   useEffect(() => {
     async function getMovieCast() {
       try {
         const movieCast = await fetchMovieCast(movie_id);
-        console.log(movieCast);
         setMovieCast(movieCast.cast);
       } catch (error) {
         console.error(error);
@@ -25,7 +25,7 @@ const Cast = () => {
     <ul>
       {cast.map(actor => {
         return (
-          <li>
+          <li key={actor.id}>
             <img
               src={
                 actor.profile_path
@@ -36,6 +36,8 @@ const Cast = () => {
               width={185}
               height={278}
             />
+            <p>{actor.name}</p>
+            <p>Character: {actor.character}</p>
           </li>
         );
       })}

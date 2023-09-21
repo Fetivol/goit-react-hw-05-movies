@@ -6,11 +6,9 @@ import { useEffect, useState } from 'react';
 const Home = () => {
   const [topMovies, setTopMovies] = useState([]);
   useEffect(() => {
-    // const endpoint = 'trending/movie/day';
     async function getTopMovies() {
       try {
         const topMoviesList = await fetchTopMovies();
-        console.log(topMoviesList);
         setTopMovies(topMoviesList.results);
       } catch (error) {
         console.error(error);

@@ -9,8 +9,6 @@ const Movies = () => {
   const query = searchParams.get('query') ?? '';
 
   useEffect(() => {
-    // const endpoint = `search/movie`;
-
     async function fetchMoviesList() {
       if (!query) {
         return;
@@ -18,7 +16,6 @@ const Movies = () => {
       try {
         const queryParams = { query };
         const movies = await fetchQueryMovies(queryParams);
-        console.log(movies);
         setMovies(movies.results);
       } catch (error) {
         console.error(error);

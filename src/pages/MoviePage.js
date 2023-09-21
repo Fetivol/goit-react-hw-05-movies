@@ -12,7 +12,6 @@ const MoviePage = () => {
     async function getTopMovies() {
       try {
         const movieDetails = await fetchMovie(movie_id);
-        console.log(movieDetails);
         setMovieDetails(movieDetails);
       } catch (error) {
         console.error(error);
