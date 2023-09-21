@@ -9,6 +9,9 @@ const Cast = () => {
   const [cast, setMovieCast] = useState([]);
 
   useEffect(() => {
+    if (!movie_id) {
+      return;
+    }
     async function getMovieCast() {
       try {
         const movieCast = await fetchMovieCast(movie_id);
@@ -23,24 +26,28 @@ const Cast = () => {
   }, [movie_id]);
   return (
     <ul>
-      {cast.map(actor => {
-        return (
-          <li key={actor.id}>
-            <img
-              src={
-                actor.profile_path
-                  ? `https://image.tmdb.org/t/p/w185/${actor.profile_path}`
-                  : defaultImg
-              }
-              alt={actor.name}
-              width={185}
-              height={278}
-            />
-            <p>{actor.name}</p>
-            <p>Character: {actor.character}</p>
-          </li>
-        );
-      })}
+      {cast.length > 0 ? (
+        cast.map(actor => {
+          return (
+            <li key={actor.id}>
+              <img
+                src={
+                  actor.profile_path
+                    ? `https://image.tmdb.org/t/p/w185/${actor.profile_path}`
+                    : defaultImg
+                }
+                alt={actor.name}
+                width={185}
+                height={278}
+              />
+              <p>{actor.name}</p>
+              <p>Character: {actor.character}</p>
+            </li>
+          );
+        })
+      ) : (
+        <p>No cast available for this movie.</p>
+      )}
     </ul>
   );
 };

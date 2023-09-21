@@ -9,6 +9,9 @@ const MoviePage = () => {
   const [movieDetails, setMovieDetails] = useState({});
 
   useEffect(() => {
+    if (!movie_id) {
+      return;
+    }
     async function getTopMovies() {
       try {
         const movieDetails = await fetchMovie(movie_id);
