@@ -1,18 +1,23 @@
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import {
+  MoviesListStyled,
+  MoviesListElementStyled,
+  MovieLink,
+} from './MoviesList.styled';
 
 export const MoviesList = ({ movies }) => {
   const location = useLocation();
   return (
-    <ul>
+    <MoviesListStyled>
       {movies.map(({ id, title }) => {
         return (
-          <li key={id}>
-            <Link to={`/movies/${id}`} state={{ from: location }}>
+          <MoviesListElementStyled key={id}>
+            <MovieLink to={`/movies/${id}`} state={{ from: location }}>
               {title}
-            </Link>
-          </li>
+            </MovieLink>
+          </MoviesListElementStyled>
         );
       })}
-    </ul>
+    </MoviesListStyled>
   );
 };

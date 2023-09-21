@@ -1,8 +1,9 @@
 import { MoviesList } from 'components/MoviesList/MoviesList';
-import { fetchQueryMovies } from '../Api';
+import { fetchQueryMovies } from '../components/Data/Api';
 import { SearchBar } from 'components/SearchBar/SearchBar';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { Container } from './Home.styled';
 const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -36,10 +37,10 @@ const Movies = () => {
   };
 
   return (
-    <div>
+    <Container>
       <SearchBar onSubmit={handleSubmit} />
-      <MoviesList movies={movies} />
-    </div>
+      {movies.length > 0 && <MoviesList movies={movies} />}
+    </Container>
   );
 };
 

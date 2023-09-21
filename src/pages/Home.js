@@ -1,7 +1,8 @@
-import { fetchTopMovies } from 'Api';
+import { fetchTopMovies } from 'components/Data/Api';
 import { MoviesList } from 'components/MoviesList/MoviesList';
 
 import { useEffect, useState } from 'react';
+import { Container, Title } from './Home.styled';
 
 const Home = () => {
   const [topMovies, setTopMovies] = useState([]);
@@ -18,10 +19,10 @@ const Home = () => {
     getTopMovies();
   }, []);
   return (
-    <div>
-      Trending Today
+    <Container>
+      <Title>Trending Today</Title>
       <MoviesList movies={topMovies} />
-    </div>
+    </Container>
   );
 };
 

@@ -1,4 +1,4 @@
-import { fetchMovie } from 'Api';
+import { fetchMovie } from 'components/Data/Api';
 import { MovieDetails } from 'components/MovieDetails/MovieDetails';
 import { useEffect, useState } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
