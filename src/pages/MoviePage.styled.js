@@ -14,6 +14,13 @@ export const ListWrapper = styled.ul`
   border-radius: 8px;
   background-color: #dff3f6;
 `;
+export const ListElement = styled.li`
+  transition: all 0.3s;
+  &:hover {
+    transform: translateX(10px);
+    font-weight: 800;
+  }
+`;
 export const BackLink = styled(NavLink)`
   background-image: linear-gradient(-180deg, #5394c4 0%, #aee6ef 100%);
   border-radius: 0.5rem;
@@ -49,11 +56,8 @@ export const LinkStyled = styled(NavLink)`
   position: relative;
   transition: all 0.3s;
 
-  &:hover {
+  &.active {
     transform: translateX(10px);
-    font-weight: 800;
-  }
-  &:active {
     font-weight: 800;
   }
 `;

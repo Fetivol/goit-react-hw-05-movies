@@ -39,7 +39,7 @@ const Movies = () => {
   const handleSubmit = evt => {
     evt.preventDefault();
     const queryString = evt.currentTarget.elements.query.value;
-    if (queryString === '') {
+    if (queryString.trim() === '') {
       toast.error('Please fill the form to search!');
       return;
     }

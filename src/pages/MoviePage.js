@@ -1,12 +1,18 @@
 import { fetchMovie } from 'Data/Api';
 import { MovieDetails } from 'components/MovieDetails/MovieDetails';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Outlet, useLocation, useParams } from 'react-router-dom';
-import { Wrapper, ListWrapper, BackLink, LinkStyled } from './MoviePage.styled';
+import {
+  Wrapper,
+  ListWrapper,
+  BackLink,
+  LinkStyled,
+  ListElement,
+} from './MoviePage.styled';
 import toast, { Toaster } from 'react-hot-toast';
 const MoviePage = () => {
   const location = useLocation();
-  const backLink = location.state?.from ?? '/';
+  const backLink = useRef(location.state?.from ?? '/');
   const { movie_id } = useParams();
   const [movieDetails, setMovieDetails] = useState({});
   const [loader, setLoader] = useState(false);
@@ -36,17 +42,17 @@ const MoviePage = () => {
 
   return (
     <Wrapper>
-      <BackLink to={backLink}>Back to the list</BackLink>
+      <BackLink to={backLink.current}>Back to the list</BackLink>
       {movieDetails && (
         <MovieDetails movieDetails={movieDetails} loader={loader} />
       )}
       <ListWrapper>
-        <li>
+        <ListElement>
           <LinkStyled to="cast">Cast</LinkStyled>
-        </li>
-        <li>
+        </ListElement>
+        <ListElement>
           <LinkStyled to="reviews">Reviews</LinkStyled>
-        </li>
+        </ListElement>
       </ListWrapper>
       <Outlet />
       <Toaster />

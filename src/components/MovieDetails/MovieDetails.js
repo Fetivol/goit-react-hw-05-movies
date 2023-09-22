@@ -16,15 +16,15 @@ export const MovieDetails = ({ movieDetails, loader }) => {
   return (
     <Wrapper>
       {loader && <Loader />}
-      {movieDetails.poster_path ? (
-        <ImgStyled
-          src={`https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`}
-          alt={movieDetails.title}
-          width={250}
-        />
-      ) : (
-        <ImgStyled src={defaultImg} alt="poster" width={250} />
-      )}
+      <ImgStyled
+        src={
+          movieDetails.poster_path
+            ? `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`
+            : defaultImg
+        }
+        alt={movieDetails.title}
+        width={250}
+      />
 
       <DescriptionWrapper>
         <MovieTitle>
