@@ -53,4 +53,7 @@ export const LinkStyled = styled(NavLink)`
     transform: translateX(10px);
     font-weight: 800;
   }
+  &:active {
+    font-weight: 800;
+  }
 `;

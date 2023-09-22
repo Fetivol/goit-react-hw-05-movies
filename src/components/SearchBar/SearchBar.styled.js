@@ -22,11 +22,6 @@ export const Input = styled.input`
   font-size: 20px;
   border: 2px solid #dff3f6;
   outline: none;
-
-  /* &::placeholder {
-    font: inherit;
-    font-size: 18px;
-  } */
 `;
 
 export const Button = styled.button`
